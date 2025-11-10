@@ -26,7 +26,6 @@ Plug 'sindrets/winshift.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Autocompletion core
-Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -79,7 +78,7 @@ require("catppuccin").setup{}
 vim.cmd.colorscheme("catppuccin")
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "", -- or use a list: { "lua", "python", "javascript" }
+  ensure_installed = {"lua", "rust", "c", "c_sharp", "c_make", "cpp", "go"}, -- or use a list: { "lua", "python", "javascript" }
   highlight = {
     enable = true,
   },
