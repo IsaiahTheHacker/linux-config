@@ -1,4 +1,5 @@
 set number
+set relativenumber
 set mouse=a
 set autoindent
 set tabstop=4
@@ -39,6 +40,10 @@ Plug 'saadparwaiz1/cmp_luasnip'
 " LSP support
 Plug 'neovim/nvim-lspconfig'
 
+Plug 'nvim-tree/nvim-web-devicons' " OPTIONAL: for file icons
+Plug 'lewis6991/gitsigns.nvim' " OPTIONAL: for git status
+Plug 'romgrk/barbar.nvim'
+
 call plug#end()
 
 
@@ -78,7 +83,7 @@ require("catppuccin").setup{}
 vim.cmd.colorscheme("catppuccin")
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"lua", "rust", "c", "c_sharp", "c_make", "cpp", "go"}, -- or use a list: { "lua", "python", "javascript" }
+  ensure_installed = {"lua", "rust", "c", "c_sharp", "cpp", "go"}, -- or use a list: { "lua", "python", "javascript" }
   highlight = {
     enable = true,
   },
@@ -97,6 +102,8 @@ require("lualine").setup{
 }
 EOF
 
+autocmd VimEnter * Neotree toggle
+
 nnoremap <C-q> :Neotree toggle<CR>
 nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
@@ -104,3 +111,4 @@ nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <leader>e <cmd>lua vim.diagnostic.open_float()<CR>
+nnoremap <C-e> :wqa<CR>
